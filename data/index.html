@@ -1,0 +1,34 @@
+<html>
+
+<head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <title>Jquery Demos</title>
+</head>
+
+<body>
+    Diese Seite sollte sich nicht reloaden lassen. Zumindest nicht &uuml;ber die Tastatur
+
+    <script>
+        $(document).keydown(function (e) {  
+            var keycode;
+            
+            if (e) {
+                keycode = e.keyCode;
+            } else if (e) {
+                keycode = e.which;
+            }
+            console.log("key: "+keycode + " -> ctrl: "+e.ctrlKey + " -> meta: "+e.metaKey);
+            if(keycode == 116 
+                || (e.ctrlKey && keycode == 82)
+                || (e.metaKey && keycode == 82)
+                || (keycode == 91 && keycode == 82)){
+                e.preventDefault();
+                console.log("reload disables")
+                return false;
+            }
+        });
+        
+    </script>
+</body>
+
+</html>
